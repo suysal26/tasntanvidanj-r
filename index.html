@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taştan Vidanjör</title>
+  
+
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
+  .hero {
+    position: relative;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+    transition: background-image 1s ease-in-out;
+  }
+
+  .hero-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+  }
+
+  .hero img {
+    width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  dpx;
+    font-weight: bold;
+    font-family: 'Arial Black', sans-serif;
+    animation: blinkLetter 1.5s infinite;
+    margin: 0 2px;
+  }
+
+  
+    50% { opacity: 0.2; color: black; }
+  }
+
+  .search-bar {
+    margin-top: 10px;
+    z-index: 1;
+  }
+
+  .search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 250px;
+  }
+
+  .slider-container {
+    background-color: #111;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #sliderText {
+    display: inline-block;
+    animation: slideLeft 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  
+
+  @keyframes slideLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @keyframes blinkColor {
+    0%, 100% { color: white; }
+    50% { color: #25D366; }
+  }
+
+  .contact {
+    background-color: #1d1d1d;
+    color: white;
+    padding: 30px 10px;
+    text-align: center;
+  }
+
+  .contact a.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .contact a.whatsapp-button:hover {
+    background-color: #1ebc58;
+  }
+
+  .call-button {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+
+  .call-button:hover {
+    background-color: #0056b3;
+  }
+
+  .bottom-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    margin: 60px auto;
+    padding: 0 5%;
+    max-width: 1200px;
+  }
+
+  .bottom-box {
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 350px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .orta-alan {
+    background-color: #e74c3c;
+    color: white;
+    flex-basis: 47%;
+    text-align: left;
+  }
+
+  .neden-biz-box {
+    background-color: #e74c3c;
+    color: white;
+    flex-basis: 47%;
+    text-align: left;
+  }
+
+  .bottom-box h2, .bottom-box h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+
+  .bottom-box ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .bottom-box ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .map {
+    padding: 30px 10px;
+    background-color: #fff;
+  }
+
+  .map h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1d1d1d;
+    text-align: center;
+  }
+
+  iframe {
+    width: 100%;
+    border: none;
+  }
+
+.animated-title span {
+  display: inline-block;
+  font-size: 100px;
+  font-weight: bold;
+  font-family: 'Arial Black', sans-serif;
+  margin: 0 2px;
+  animation: neonBlink 1s infinite alternate;
+  color: #e74c3c;
+  text-shadow: 0 0 5px #e74c3c, 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 40px #ff0000;
+}
+
+@keyframes neonBlink {
+  0% { opacity: 1; text-shadow: 0 0 5px #e74c3c, 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 40px #ff0000; }
+  50% { opacity: 0.3; text-shadow: none; }
+  100% { opacity: 1; text-shadow: 0 0 5px #e74c3c, 0 0 10px #e74c3c, 0 0 20px #e74c3c, 0 0 40px #ff0000; }
+}
+
+#sliderText span {
+  animation: blinkColor 5s ease-in-out infinite;
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.teklif-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #ff0000;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.teklif-button:hover {
+  background-color: #cc0000;
+}
+
+
+
+
+
+
+.slider-holder-nedenbiz {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.slider-holder-nedenbiz img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .bottom-sections {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .bottom-box,
+  .slider-gallery {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+
+  .slider-holder,
+  .slider-holder-nedenbiz {
+    height: auto;
+    max-height: none;
+  }
+
+  .slider-holder img,
+  .slider-holder-nedenbiz img {
+    max-height: 300px;
+  }
+
+  .top-banner,
+  .contact,
+  .map,
+  .hero {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .firma-slogan {
+    font-size: 36px;
+  }
+
+  .animated-title span {
+    font-size: 60px;
+  }
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+}
+
+.bottom-box {
+  background-color: #ffffff;
+  color: #2c3e50;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bottom-box h2 {
+  color: #d32f2f;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.bottom-box p,
+.bottom-box ul li {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.slider-holder,
+.slider-holder-nedenbiz {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+.top-banner {
+  background-color: #1e2a38;
+  color: white;
+  padding: 40px 5% 20px;
+}
+
+.firma-slogan {
+  font-size: 48px;
+  color: #f44336;
+}
+
+.firma-adi {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.firma-aciklama {
+  color: #e0e0e0;
+}
+
+.teklif-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.teklif-button:hover {
+  background-color: #c62828;
+}
+
+.slider-holder img,
+.slider-holder-nedenbiz img {
+  border-radius: 10px;
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.bottom-box {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(255, 87, 34, 0.4);
+  padding: 25px;
+}
+
+.bottom-box h2 {
+  color: #ff5722;
+  font-size: 24px;
+  border-bottom: 2px solid #ff5722;
+  margin-bottom: 20px;
+}
+
+.bottom-box p,
+.bottom-box ul li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #eaeaea;
+}
+
+.slider-holder,
+.slider-holder-nedenbiz {
+  background-color: #222;
+  border: 2px solid #ff5722;
+  border-radius: 12px;
+}
+
+.top-banner {
+  background-color: #000000;
+  color: white;
+  padding: 50px 5% 30px;
+  text-align: left;
+  border-bottom: 4px solid #ff5722;
+}
+
+.firma-slogan {
+  font-size: 54px;
+  color: #ff5722;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.firma-adi {
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.firma-aciklama {
+  color: #cccccc;
+  margin-top: 15px;
+}
+
+.teklif-button {
+  background-color: #ff5722;
+  color: white;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #ff5722;
+}
+
+.teklif-button:hover {
+  background-color: #e64a19;
+  box-shadow: 0 0 15px #e64a19;
+}
+
+.slider-holder img,
+.slider-holder-nedenbiz img {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .bottom-sections {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .bottom-box,
+  .slider-gallery {
+    flex: 1 1 100%;
+    margin-bottom: 30px;
+  }
+
+  .slider-holder,
+  .slider-holder-nedenbiz {
+    height: auto;
+    max-height: none;
+  }
+
+  .slider-holder img,
+  .slider-holder-nedenbiz img {
+    max-height: 300px;
+  }
+
+  .top-banner,
+  .contact,
+  .map,
+  .hero {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .firma-slogan {
+    font-size: 36px;
+  }
+
+  .animated-title span {
+    font-size: 60px;
+  }
+}
+
+
+.feature-section {
+  background-color: #b71c1c;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px 30px;
+  padding: 60px 40px;
+  text-align: left;
+}
+
+.feature-section .feature h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+}
+
+.feature-section .feature p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+
+.site-footer {
+  background-color: #0d0d1a;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  border-top: 1px solid #444;
+}
+
+
+/* Giriş Animasyonu */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadein {
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-2 {
+  animation-delay: 1s;
+}
+
+.animate-delay-3 {
+  animation-delay: 1.5s;
+}
+
+
+
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 36px;
+  z-index: 999;
+  line-height: 60px;
+  box-shadow: 0 0 10px #25d366;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  background-color: #1ebe5d;
+}
+
+
+.dark-mode {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+.dark-mode .bottom-box {
+  background-color: #f0f0f0 !important;
+  color: #111 !important;
+}
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 28px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #ff5722;
+}
+
+.cta-call {
+  background-color: #ff5722;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+.cta-call h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.popup-notice {
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #2ecc71;
+  font-size: 14px;
+  animation: fadePopup 8s ease forwards;
+}
+@keyframes fadePopup {
+  0% {opacity: 0;}
+  10% {opacity: 1;}
+  90% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.form-section {
+  background-color: #1e1e1e;
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
+.form-section form {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.form-section input,
+.form-section select,
+.form-section button {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+}
+.form-section button {
+  background-color: #25d366;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.form-section button:hover {
+  background-color: #1ebe5d;
+}
+
+</style>
+<style>
+  .top-banner {
+    background-color: #111;
+    color: white;
+    padding: 40px 5% 20px;
+  }
+
+  .top-text {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .firma-adi {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .firma-slogan {
+    font-size: 60px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+  }
+
+  .firma-aciklama {
+    font-size: 20px;
+    color: white;
+    line-height: 1.6;
+  }
+
+#sliderText span {
+  animation: blinkColor 5s ease-in-out infinite;
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.teklif-button {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #ff0000;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.teklif-button:hover {
+  background-color: #cc0000;
+}
+
+
+/* Giriş Animasyonu */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadein {
+  opacity: 0;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-2 {
+  animation-delay: 1s;
+}
+
+.animate-delay-3 {
+  animation-delay: 1.5s;
+}
+
+</style>
+
+
+
+
+</head>
+<body>
+  <div class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="logo.jpg" alt="Taştan Vidanjör Logosu" />
+      <div class="animated-title">
+        <span>T</span><span>A</span><span>Ş</span><span>T</span><span>A</span><span>N</span>
+        <span>&nbsp;</span>
+        <span>V</span><span>İ</span><span>D</span><span>A</span><span>N</span><span>J</span><span>Ö</span><span>R</span>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Hizmet ara...">
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+<section class="top-banner">
+  <div class="top-text">
+    <h2 class="firma-adi">Taştan Vidanjör ve Kanalizasyon Hizmetleri</h2>
+    <h1 class="firma-slogan">Güvenilir ve Çözüm Odaklı Hizmetlerimiz</h1>
+    <p class="firma-aciklama">
+      Taştan Vidanjör ve Kanalizasyon Hizmetleri olarak uzun yıllar sektördeki deneyimimiz ve alanında uzman ekibimiz ile hizmet vermekteyiz.
+      Modern teknolojilere sahip iş ve makinelerimiz ve yüksek çözüm kapasitesine sahip profesyonel çalışanlarımız ile,
+      müşterilerimize hızlı ve etkili çözümler sunmaktayız.
+    </p>
+<br>
+<a href="tel:+905052247837" class="teklif-button">📞 TEKLİF AL</a>
+
+  </div>
+</section>
+
+<div class="slider-container">
+    <div id="sliderText">
+      <span>--TORBA--</span>
+      <span>--GÖLTÜRKBÜKÜ--</span>
+      <span>--GÜNDOĞAN--</span>
+      <span>--GÖKÇEBEL--</span>
+      <span>--YALIKAVAK--</span>
+    </div>
+  </div>
+
+  <section class="contact">
+    <h2>İletişim</h2>
+    <p>Telefon: <a href="tel:+905052247837" style="color: #25D366; font-weight: bold;">0542 710 0332</a><br>
+Telefon 2: <a href="tel:+905052247837" style="color: #25D366; font-weight: bold;">0505 224 7837</a></p>
+    <a class="whatsapp-button" href="https://wa.me/905052247837" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:20px; height:20px; vertical-align:middle; margin-right:8px;">
+      WhatsApp’tan Yaz
+    </a><br>
+    <a href="tel:+905052247837" class="call-button">📞 Hemen Ara</a>
+  </section>
+
+  <div class="bottom-sections">
+    
+<div class="bottom-box orta-alan animate-fadein animate-delay-2">
+  <h2>Verdiğimiz Hizmetler</h2>
+  <p>Logar temizliği ve tıkanıklık açma, şehir altyapısının sorunsuz çalışmasını sağlamak için kritik öneme sahip işlemlerdir. Taştan Vidanjör ve Kanalizasyon Hizmetleri olarak, logar sistemlerinizdeki tıkanıklıkları hızlı ve etkili bir şekilde gidermek için profesyonel hizmetler sunuyoruz.</p>
+  <h3>Logar Temizliği ve Tıkanıklık Açma Hizmetlerimiz</h3>
+  <ul>
+    <li><strong>Logar Temizliği:</strong> Logar sistemlerinin içini etkili bir şekilde temizleyerek, tıkanıklıkları önleriz.</li>
+    <li><strong>Tıkanıklık Açma:</strong> Logar sistemlerindeki tıkanıklıkları hızlı ve verimli bir şekilde açarız.</li>
+    <li><strong>Kuyu Temizliği:</strong> Logar kuyu temizliği yaparak, sistemlerin sorunsuz çalışmasını sağlarız.</li>
+    <li><strong>Atık Yönetimi:</strong> Atıkların uygun şekilde yönetilmesini sağlayarak, logar sistemlerinizin uzun ömürlü olmasına katkıda bulunuruz.</li>
+  </ul>
+  <p>Kanalizasyon temizliği, altyapınızın sağlıklı ve sorunsuz çalışmasını sağlamak için düzenli olarak yapılması gereken önemli bir bakım işlemidir. Taştan Vidanjör ve Kanalizasyon Hizmetleri olarak, profesyonel ekiplerimiz ve modern ekipmanlarımızla, kanalizasyon sistemlerinizin etkin bir şekilde temizlenmesini ve bakımını sağlıyoruz.</p>
+  <h3>Kanalizasyon Temizliği Hizmetlerimiz</h3>
+  <ul>
+    <li><strong>Kanalizasyon Boru Temizliği:</strong> Boruların içindeki tıkanıklıkları ve birikintileri etkili bir şekilde temizleriz.</li>
+    <li><strong>Tıkanıklık Açma:</strong> Oluşan tıkanıklıkları hızlı ve verimli bir şekilde açar, su akışını tekrar sağlarız.</li>
+    <li><strong>Kuyu Temizliği:</strong> Kanalizasyon kuyularının düzenli temizliğini yaparak, sistemin düzgün çalışmasını garanti ederiz.</li>
+    <li><strong>Kötü Koku Kontrolü:</strong> Kötü kokuların kaynağını bularak, bu sorunları ortadan kaldırırız.</li>
+  </ul>
+</div>
+
+    <div class="bottom-box neden-biz-box animate-fadein animate-delay-3">
+      <h2>Neden Biz?</h2>
+      <p><strong>Taştan Vidanjör ve Kanalizasyon Hizmetleri</strong> olarak, sektördeki uzun yıllara dayanan deneyimimiz ve modern teknoloji kullanımı ile öne çıkıyoruz. Müşteri memnuniyeti odaklı yaklaşımımız ve kaliteli hizmet anlayışımız sayesinde, sektörümüzde güvenilir bir tercih olmaktan gurur duyuyoruz.</p>
+      <ul>
+        <li><strong>Deneyim:</strong> Yılların getirdiği uzmanlık ve güvenilirlik.</li>
+        <li><strong>Modern Teknoloji:</strong> En son teknolojiye sahip ekipmanlar.</li>
+        <li><strong>Müşteri Memnuniyeti:</strong> Önceliğimiz her zaman müşteri memnuniyeti.</li>
+        <li><strong>Rekabetçi Fiyatlar:</strong> Kaliteli hizmeti uygun fiyatlarla sunuyoruz.</li>
+      </ul>
+    
+<div class="slider-holder-nedenbiz">
+  <img id="nedenBizSlider" src="İŞ1.png" alt="Hizmet Görseli">
+</div>
+</div>
+  </div>
+
+  <section class="map">
+    <h2>Konumumuz</h2>
+    <iframe
+      src="https://maps.google.com/maps?q=37.0995710,27.3995900&z=15&output=embed"
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <script>
+    const hero = document.getElementById("hero");
+    const heroImages = ["1.jpg", "2.jpg", "3.jpg"];
+    let imageIndex = 0;
+
+    setInterval(() => {
+      imageIndex = (imageIndex + 1) % heroImages.length;
+      hero.style.backgroundImage = `url(${heroImages[imageIndex]})`;
+    }, 4000);
+
+    hero.style.backgroundImage = `url(${heroImages[0]})`;
+  </script>
+
+<script>
+  const nedenBizImages = ["A.jpg", "B.jpg", "C.jpg", "D.jpg"];
+  let nedenIndex = 0;
+  const nedenImageEl = document.getElementById("nedenBizSlider");
+
+  setInterval(() => {
+    nedenIndex = (nedenIndex + 1) % nedenBizImages.length;
+    nedenImageEl.src = nedenBizImages[nedenIndex];
+  }, 3000);
+</script>
+
+
+<section class="feature-section">
+  <div class="feature">
+    <h3>🚀 Yenilikçi Teknoloji Kullanımı</h3>
+    <p>En güncel teknolojiyi benimseyerek, hizmetlerimizin etkinliğini ve verimliliğini artırmak.</p>
+  </div>
+  <div class="feature">
+    <h3>🌿 Güvenli ve Çevre Dostu Çözümler</h3>
+    <p>Atık yönetiminde çevre standartlarına uygun, güvenli ve sürdürülebilir çözümler sunmak.</p>
+  </div>
+  <div class="feature">
+    <h3>🤝 Profesyonel Hizmet</h3>
+    <p>Uzman ekibimizle en yüksek kaliteyi sağlayarak, müşteri memnuniyetini ön planda tutmak.</p>
+  </div>
+  <div class="feature">
+    <h3>🔧 Sürekli İnovasyon</h3>
+    <p>Yenilikçi yöntemlerle hizmetlerimizi sektör trendlerine uygun güncel tutmak.</p>
+  </div>
+  <div class="feature">
+    <h3>⚡ Hızlı ve Etkili Çözümler</h3>
+    <p>Müşteri ihtiyaçlarını hızlı ve etkili şekilde çözmek.</p>
+  </div>
+  <div class="feature">
+    <h3>🦺 İş Güvenliği ve Kalite</h3>
+    <p>En yüksek iş güvenliği ve kalite standartlarıyla profesyonel hizmet sunmak.</p>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <p>Telif hakkı © 2025 Taştan Vidanjör Hizmetleri</p>
+</footer>
+
+
+
+
+
+<a href="https://wa.me/905052247837" class="whatsapp-float" target="_blank" title="Bize WhatsApp'tan ulaşın">
+  💬
+</a>
+
+
+<div class="popup-notice" id="popup">
+  ✅ Bugün 12 müşteriye hizmet verdik!
+</div>
+
+
+<section class="cta-call">
+  <h2>📞 Hızlı Müdahale İçin Hemen İletişime Geçin</h2>
+  <a href="https://wa.me/905052247837" class="teklif-button">Teklif Al</a>
+</section>
+
+
+<section class="form-section">
+  <h2>Hizmet Talep Formu</h2>
+  <form id="hizmetForm">
+    <input type="text" id="name" placeholder="Adınız Soyadınız" required />
+    <input type="tel" id="phone" placeholder="Telefon Numaranız" required />
+    <select id="service">
+      <option value="Logar Temizliği">Logar Temizliği</option>
+      <option value="Kanal Açma">Kanal Açma</option>
+      <option value="Vidanjör Hizmeti">Vidanjör Hizmeti</option>
+    </select>
+    <button type="submit">WhatsApp'tan Gönder</button>
+  </form>
+</section>
+
+
+<script>
+  const toggleBtn = document.createElement('button');
+  toggleBtn.innerHTML = '☀️';
+  toggleBtn.className = 'theme-toggle';
+  toggleBtn.onclick = () => {
+    document.body.classList.toggle('dark-mode');
+    toggleBtn.innerHTML = document.body.classList.contains('dark-mode') ? '🌙' : '☀️';
+  };
+  document.body.appendChild(toggleBtn);
+</script>
+
+<script>
+document.getElementById('hizmetForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const service = document.getElementById('service').value;
+  const msg = `Merhaba, benim adım ${name}. Telefon numaram: ${phone}. ${service} hizmeti hakkında bilgi almak istiyorum.`;
+  window.open(`https://wa.me/905052247837?text=${encodeURIComponent(msg)}`, '_blank');
+});
+</script>
+
+</body>
+</html>
